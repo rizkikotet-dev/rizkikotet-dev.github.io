@@ -10,16 +10,16 @@ order: 4
 {% assign HEAD_PREFIX = 'h_' %}
 {% assign LIST_PREFIX = 'l_' %}
 
-<div class="row g-2 align-items-center">
-  <div class="col">
-    <input 
-      type="text" 
-      class="form-control form-control-lg border-0 bg-light dark-mode-inverted" 
-      id="searchInput"
-      placeholder="{{ site.data.locales[lang].search.hint | default: 'Search files...' }}"
-    >
-  </div>
-</div>
+<search id="search" class="align-items-center ms-3 ms-lg-0"> 
+    <i class="fas fa-search fa-fw"></i> 
+    <input class="form-control" 
+        id="searchInput" 
+        type="search" 
+        aria-label="search" 
+        autocomplete="off" 
+        placeholder="{{ site.data.locales[lang].search.hint | default: 'Search files...' }}"
+    > 
+</search>
 
 <div class="card categories mt-3">
   <div class="card-header d-flex justify-content-between hide-border-bottom">
@@ -196,8 +196,13 @@ order: 4
   border-bottom: none;
 }
 
-.form-control.form-control-lg {
-  padding: 0.75rem 1rem;
+#search-input {
+    background: center;
+    border: 0;
+    border-radius: 0;
+    padding: .18rem .3rem;
+    color: var(--text-color);
+    height: auto;
 }
 
 .dark-mode-inverted {
