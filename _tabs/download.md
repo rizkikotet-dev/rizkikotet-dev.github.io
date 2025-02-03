@@ -10,27 +10,25 @@ order: 4
 {% assign HEAD_PREFIX = 'h_' %}
 {% assign LIST_PREFIX = 'l_' %}
 
-<div class="row">
-  <div class="col-12 col-md-8 mb-3">
-    <div class="input-group">
-      <span class="input-group-text border-secondary bg-body">
-        <i class="fas fa-search fa-fw"></i>
-      </span>
-      <input 
-        type="text" 
-        class="form-control border-secondary bg-body" 
-        id="searchInput" 
-        placeholder="{{ site.data.locales[lang].search.hint | default: 'Search files...' }}"
-      >
-    </div>
+<div class="row g-2 align-items-center">
+  <div class="col-auto">
+    <i class="fas fa-search"></i>
+  </div>
+  <div class="col">
+    <input 
+      type="text" 
+      class="form-control form-control-lg border-0 bg-light dark-mode-inverted" 
+      id="searchInput"
+      placeholder="{{ site.data.locales[lang].search.hint | default: 'Search files...' }}"
+    >
   </div>
 </div>
 
-<div class="card categories">
+<div class="card categories mt-3">
   <div class="card-header d-flex justify-content-between hide-border-bottom">
     <span class="ms-2">
       <i class="far fa-folder-open fa-fw"></i>
-      <span class="text">Available Downloads</span>
+      <span class="text-muted">Available Downloads</span>
       <span class="text-muted small font-weight-light">
         <span id="file-count">0</span> files
       </span>
@@ -181,14 +179,18 @@ order: 4
   border-bottom: none;
 }
 
-[data-theme="dark"] .input-group-text {
-  background-color: var(--body-bg);
-  border-color: var(--border-color);
+.form-control.form-control-lg {
+  padding: 0.75rem 1rem;
 }
 
-[data-theme="dark"] .form-control {
-  background-color: var(--body-bg);
-  border-color: var(--border-color);
+.dark-mode-inverted {
+  background-color: var(--body-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+.dark-mode-inverted::placeholder {
+  color: var(--text-color-secondary) !important;
 }
 
 .hide-border-bottom {
