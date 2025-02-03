@@ -196,7 +196,7 @@ order: 4
   border-bottom: none;
 }
 
-#search-input {
+#searchInput {
     background: center;
     border: 0;
     border-radius: 0;
