@@ -1,30 +1,60 @@
 ---
+layout: page
+title: Downloads
 icon: fas fa-download
 order: 4
 ---
 
+{% include lang.html %}
+
+{% assign HEAD_PREFIX = 'h_' %}
+{% assign LIST_PREFIX = 'l_' %}
+
 <div class="row">
   <div class="col-12 col-md-8 mb-3">
     <div class="input-group">
-      <span class="input-group-text border-secondary bg-body"><i class="fas fa-search"></i></span>
-      <input type="text" class="form-control border-secondary bg-body" id="searchInput" 
-        placeholder="Search files..." aria-label="Search">
+      <span class="input-group-text border-secondary bg-body">
+        <i class="fas fa-search fa-fw"></i>
+      </span>
+      <input 
+        type="text" 
+        class="form-control border-secondary bg-body" 
+        id="searchInput" 
+        placeholder="{{ site.data.locales[lang].search.hint | default: 'Search files...' }}"
+      >
     </div>
   </div>
 </div>
 
-<div class="card">
-  <div class="card-header">
-    <span>
+<div class="card categories">
+  <!-- top-category -->
+  <div class="card-header d-flex justify-content-between hide-border-bottom">
+    <span class="ms-2">
       <i class="far fa-folder-open fa-fw"></i>
-      <span class="ms-2">Available Downloads</span>
+      <span class="mx-2">Available Downloads</span>
+      <span class="text-muted small font-weight-light">
+        <span id="file-count">0</span> files
+      </span>
     </span>
-  </div>
 
-  <div class="card-body">
-    <ul id="download-list" class="list-group list-group-flush"></ul>
-    <div class="text-center mt-3">
-      <button id="loadMore" class="btn btn-outline-primary d-none">
+    <!-- arrow -->
+    <a
+      href="#download-list"
+      data-bs-toggle="collapse"
+      aria-expanded="true"
+      class="category-trigger hide-border-bottom"
+    >
+      <i class="fas fa-fw fa-angle-down"></i>
+    </a>
+  </div>
+  <!-- .card-header -->
+
+  <div id="download-list" class="collapse show" aria-expanded="true">
+    <ul class="list-group">
+      <!-- Files will be dynamically inserted here -->
+    </ul>
+    <div class="text-center p-3">
+      <button id="loadMore" class="btn btn-outline-primary btn-sm d-none">
         Load More
       </button>
     </div>
@@ -49,48 +79,37 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentPage = 0;
   let filteredFiles = [...fileList];
 
-  const downloadList = document.getElementById('download-list');
+  const downloadList = document.querySelector('#download-list ul');
   const loadMoreBtn = document.getElementById('loadMore');
   const searchInput = document.getElementById('searchInput');
+  const fileCountSpan = document.getElementById('file-count');
 
   function displayFiles(files, start, limit) {
     const fragment = document.createDocumentFragment();
     
     files.slice(start, start + limit).forEach(file => {
       const li = document.createElement('li');
-      li.className = 'list-group-item d-flex justify-content-between align-items-center';
+      li.className = 'list-group-item';
       
-      const fileInfo = document.createElement('div');
-      fileInfo.className = 'd-flex flex-column';
+      const content = `
+        <div class="d-flex justify-content-between align-items-center">
+          <span>
+            <i class="far fa-file fa-fw"></i>
+            <a href="${file.path}" download class="mx-2">${file.name}</a>
+            <span class="text-muted small font-weight-light">
+              Added: ${file.date}
+            </span>
+          </span>
+          <a href="${file.path}" 
+             download 
+             class="category-trigger hide-border-bottom"
+          >
+            <i class="fas fa-download fa-fw"></i>
+          </a>
+        </div>
+      `;
       
-      const nameDiv = document.createElement('div');
-      const icon = document.createElement('i');
-      icon.className = 'far fa-file fa-fw';
-      
-      const link = document.createElement('a');
-      link.href = file.path;
-      link.download = file.name;
-      link.className = 'ms-2';
-      link.textContent = file.name;
-      
-      nameDiv.appendChild(icon);
-      nameDiv.appendChild(link);
-      
-      const dateDiv = document.createElement('small');
-      dateDiv.className = 'text-muted ms-4';
-      dateDiv.textContent = `Added: ${file.date}`;
-      
-      fileInfo.appendChild(nameDiv);
-      fileInfo.appendChild(dateDiv);
-      
-      const downloadBtn = document.createElement('a');
-      downloadBtn.href = file.path;
-      downloadBtn.download = file.name;
-      downloadBtn.className = 'btn btn-outline-primary btn-sm';
-      downloadBtn.innerHTML = '<i class="fas fa-download"></i>';
-      
-      li.appendChild(fileInfo);
-      li.appendChild(downloadBtn);
+      li.innerHTML = content;
       fragment.appendChild(li);
     });
 
@@ -103,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
     downloadList.appendChild(fragment);
     
     loadMoreBtn.classList.toggle('d-none', filteredFiles.length <= itemsPerPage);
+    fileCountSpan.textContent = filteredFiles.length;
     currentPage = 1;
   }
 
@@ -133,19 +153,34 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <style>
-#download-list .btn-sm {
-  padding: 0.25rem 0.5rem;
+.category-trigger {
+  margin-left: 2rem;
+  border-bottom: none !important;
 }
 
-.input-group {
-  max-width: 100%;
+.category-trigger:hover {
+  color: var(--link-hover-color) !important;
 }
 
-#download-list .list-group-item:hover {
-  background-color: var(--bs-gray-100);
+#download-list .list-group-item:first-child {
+  border-top: none;
 }
 
-[data-theme="dark"] #download-list .list-group-item:hover {
-  background-color: var(--bs-gray-800);
+#download-list .list-group-item:last-child {
+  border-bottom: none;
+}
+
+[data-theme="dark"] .input-group-text {
+  background-color: var(--body-bg);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .form-control {
+  background-color: var(--body-bg);
+  border-color: var(--border-color);
+}
+
+.hide-border-bottom {
+  border-bottom: none !important;
 }
 </style>
