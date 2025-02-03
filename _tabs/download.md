@@ -3,9 +3,6 @@ icon: fas fa-download
 order: 4
 ---
 
-# Downloads
-
-{: .mb-5 }
 
 <div class="card categories">
     <div class="card-header d-flex justify-content-between hide-border-bottom">
