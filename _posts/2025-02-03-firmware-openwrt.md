@@ -3,6 +3,7 @@ title: Custom Firmware OpenWrt & ImmortalWrt | RTA-WRT
 date: 2025-02-03 15:25:00 +0700
 categories: [OpenWrt, Firmware]
 tags: [OpenWrt, Custom Firmware, Networking]
+comments: true
 ---
 
 <h1 align="center">
