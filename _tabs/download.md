@@ -74,7 +74,8 @@ order: 4
       {
         name: "{{ file.name }}",
         path: "{{ file.path | relative_url }}",
-        date: "{{ file.modified_time | date: '%Y-%m-%d' }}"
+        date: "{{ file.modified_time | date: '%Y-%m-%d' }}",
+        relativePath: "{{ file.path | remove_first: '/downloads/' }}"
       }{% unless forloop.last %},{% endunless %}
       {% endif %}
     {% endfor %}
@@ -84,6 +85,7 @@ order: 4
   let currentPage = 1;
   let totalPages = Math.ceil(fileList.length / itemsPerPage);
   let filteredFiles = [...fileList];
+  let currentPath = '';
 
   const downloadList = document.querySelector('#download-list ul');
   const prevPageBtn = document.getElementById('prevPage');
@@ -100,19 +102,37 @@ order: 4
     downloadList.innerHTML = '';
     const fragment = document.createDocumentFragment();
     
+    if (currentPath !== '') {
+      const backLi = document.createElement('li');
+      backLi.className = 'list-group-item';
+      backLi.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center">
+          <span onclick="navigateBack()" style="cursor: pointer;">
+            <i class="fas fa-arrow-left fa-fw"></i>
+            <span class="mx-2">Back to parent directory</span>
+          </span>
+        </div>
+      `;
+      fragment.appendChild(backLi);
+    }
+
     files.forEach(file => {
       const li = document.createElement('li');
       li.className = 'list-group-item';
       
+      const isFolder = file.relativePath.includes('/') && 
+                       file.relativePath.split('/')[0] === currentPath;
+      
       li.innerHTML = `
         <div class="d-flex justify-content-between align-items-center">
-          <span>
-            <i class="far fa-file fa-fw"></i>
-            <a href="${file.path}" download class="mx-2">${file.name}</a>
-            <span class="text-muted small font-weight-light">
+          <span ${isFolder ? `onclick="navigateToFolder('${file.relativePath.split('/')[1]}')"` : ''} style="cursor: ${isFolder ? 'pointer' : 'default'}">
+            <i class="far ${isFolder ? 'fa-folder' : 'fa-file'} fa-fw"></i>
+            <span class="mx-2">${isFolder ? file.relativePath.split('/')[1] : file.name}</span>
+            ${!isFolder ? `<span class="text-muted small font-weight-light">
               Added: ${file.date}
-            </span>
+            </span>` : ''}
           </span>
+          ${!isFolder ? `
           <a href="${file.path}" 
              download 
              class="category-trigger hide-border-bottom"
@@ -120,6 +140,7 @@ order: 4
           >
             <i class="fas fa-download fa-fw"></i>
           </a>
+          ` : ''}
         </div>
       `;
       
@@ -130,10 +151,38 @@ order: 4
     updatePagination();
   }
 
-  function updatePagination() {
-    prevPageBtn.classList.toggle('disabled', currentPage === 1);
-    nextPageBtn.classList.toggle('disabled', currentPage === totalPages);
-    currentPageBtn.firstElementChild.textContent = currentPage;
+  function navigateToFolder(folderName) {
+    currentPath = folderName;
+    filterFilesByPath();
+  }
+
+  function navigateBack() {
+    currentPath = '';
+    filterFilesByPath();
+  }
+
+  function filterFilesByPath() {
+    if (currentPath === '') {
+      const uniqueFolders = new Set();
+      filteredFiles = fileList.filter(file => {
+        const pathParts = file.relativePath.split('/');
+        if (pathParts.length === 1) return true;
+        if (pathParts.length > 1 && !uniqueFolders.has(pathParts[0])) {
+          uniqueFolders.add(pathParts[0]);
+          return true;
+        }
+        return false;
+      });
+    } else {
+      filteredFiles = fileList.filter(file => 
+        file.relativePath.startsWith(`${currentPath}/`)
+      );
+    }
+
+    totalPages = Math.ceil(filteredFiles.length / itemsPerPage);
+    currentPage = 1;
+    displayFiles(currentPage);
+    fileCountSpan.textContent = filteredFiles.length;
   }
 
   function handleSearch() {
@@ -164,7 +213,7 @@ order: 4
       }
     });
 
-    displayFiles(currentPage);
+    filterFilesByPath();
   }
 
   if (document.readyState === 'loading') {
@@ -172,6 +221,9 @@ order: 4
   } else {
     init();
   }
+
+  window.navigateToFolder = navigateToFolder;
+  window.navigateBack = navigateBack;
 })();
 </script>
 
