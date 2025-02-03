@@ -27,17 +27,15 @@ order: 4
 </div>
 
 <div class="card categories">
-  <!-- top-category -->
   <div class="card-header d-flex justify-content-between hide-border-bottom">
     <span class="ms-2">
       <i class="far fa-folder-open fa-fw"></i>
-      <span class="mx-2">Available Downloads</span>
+      <a class="mx-2">Available Downloads</a>
       <span class="text-muted small font-weight-light">
         <span id="file-count">0</span> files
       </span>
     </span>
 
-    <!-- arrow -->
     <a
       href="#download-list"
       data-bs-toggle="collapse"
@@ -47,11 +45,9 @@ order: 4
       <i class="fas fa-fw fa-angle-down"></i>
     </a>
   </div>
-  <!-- .card-header -->
 
   <div id="download-list" class="collapse show" aria-expanded="true">
     <ul class="list-group">
-      <!-- Files will be dynamically inserted here -->
     </ul>
     <div class="text-center p-3">
       <button id="loadMore" class="btn btn-outline-primary btn-sm d-none">
@@ -62,15 +58,15 @@ order: 4
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+(function() {
   const fileList = [
     {% for file in site.static_files %}
       {% if file.path contains '/downloads/' %}
-        {
-          name: "{{ file.name }}",
-          path: "{{ file.path | relative_url }}",
-          date: "{{ file.modified_time | date: '%Y-%m-%d' }}"
-        },
+      {
+        name: "{{ file.name }}",
+        path: "{{ file.path | relative_url }}",
+        date: "{{ file.modified_time | date: '%Y-%m-%d' }}"
+      }{% unless forloop.last %},{% endunless %}
       {% endif %}
     {% endfor %}
   ];
@@ -91,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const li = document.createElement('li');
       li.className = 'list-group-item';
       
-      const content = `
+      li.innerHTML = `
         <div class="d-flex justify-content-between align-items-center">
           <span>
             <i class="far fa-file fa-fw"></i>
@@ -109,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       `;
       
-      li.innerHTML = content;
       fragment.appendChild(li);
     });
 
@@ -134,22 +129,30 @@ document.addEventListener('DOMContentLoaded', function() {
     updateList();
   }
 
-  searchInput.addEventListener('input', handleSearch);
+  function init() {
+    searchInput.addEventListener('input', handleSearch);
 
-  loadMoreBtn.addEventListener('click', () => {
-    const start = currentPage * itemsPerPage;
-    const fragment = displayFiles(filteredFiles, start, itemsPerPage);
-    downloadList.appendChild(fragment);
-    currentPage++;
-    
-    if (currentPage * itemsPerPage >= filteredFiles.length) {
-      loadMoreBtn.classList.add('d-none');
-    }
-  });
+    loadMoreBtn.addEventListener('click', () => {
+      const start = currentPage * itemsPerPage;
+      const fragment = displayFiles(filteredFiles, start, itemsPerPage);
+      downloadList.appendChild(fragment);
+      currentPage++;
+      
+      if (currentPage * itemsPerPage >= filteredFiles.length) {
+        loadMoreBtn.classList.add('d-none');
+      }
+    });
 
-  // Initial display
-  updateList();
-});
+    updateList();
+  }
+
+  // Wait for DOM to be fully loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script>
 
 <style>
