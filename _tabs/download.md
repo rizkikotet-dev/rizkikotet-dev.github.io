@@ -30,27 +30,32 @@ order: 4
   <div class="card-header d-flex justify-content-between hide-border-bottom">
     <span class="ms-2">
       <i class="far fa-folder-open fa-fw"></i>
-      <a href="#" class="mx-2">Available Downloads</a>
+      <span class="text">Available Downloads</span>
       <span class="text-muted small font-weight-light">
         <span id="file-count">0</span> files
       </span>
     </span>
 
-    <a
-      href="#download-list"
+    <button
+      type="button"
       data-bs-toggle="collapse"
+      data-bs-target="#download-list"
       aria-expanded="true"
+      aria-controls="download-list"
       class="category-trigger hide-border-bottom"
     >
       <i class="fas fa-fw fa-angle-down"></i>
-    </a>
+    </button>
   </div>
 
-  <div id="download-list" class="collapse show" aria-expanded="true">
+  <div id="download-list" class="collapse show">
     <ul class="list-group">
     </ul>
     <div class="text-center p-3">
-      <button id="loadMore" class="btn btn-outline-primary btn-sm d-none">
+      <button 
+        type="button"
+        id="loadMore" 
+        class="btn btn-outline-primary btn-sm d-none">
         Load More
       </button>
     </div>
@@ -99,6 +104,7 @@ order: 4
           <a href="${file.path}" 
              download 
              class="category-trigger hide-border-bottom"
+             aria-label="Download ${file.name}"
           >
             <i class="fas fa-download fa-fw"></i>
           </a>
@@ -146,7 +152,6 @@ order: 4
     updateList();
   }
 
-  // Wait for DOM to be fully loaded
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
@@ -159,6 +164,9 @@ order: 4
 .category-trigger {
   margin-left: 2rem;
   border-bottom: none !important;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .category-trigger:hover {
