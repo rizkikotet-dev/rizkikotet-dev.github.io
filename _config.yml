@@ -16,7 +16,7 @@ timezone: Asia/Jakarta
 
 title: RTA-WRT # the main title
 
-tagline: @RizkiKotet # it will display as the subtitle
+tagline: RizkiKotet # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Personal Website.
