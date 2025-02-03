@@ -11,9 +11,6 @@ order: 4
 {% assign LIST_PREFIX = 'l_' %}
 
 <div class="row g-2 align-items-center">
-  <div class="col-auto">
-    <i class="fas fa-search"></i>
-  </div>
   <div class="col">
     <input 
       type="text" 
@@ -49,14 +46,23 @@ order: 4
   <div id="download-list" class="collapse show">
     <ul class="list-group">
     </ul>
-    <div class="text-center p-3">
-      <button 
-        type="button"
-        id="loadMore" 
-        class="btn btn-outline-primary btn-sm d-none">
-        Load More
-      </button>
-    </div>
+    <nav aria-label="Downloads pagination">
+      <ul class="pagination justify-content-center mt-3">
+        <li class="page-item disabled" id="prevPage">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item active" id="currentPage">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item" id="nextPage">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>
 
@@ -75,18 +81,26 @@ order: 4
   ];
 
   const itemsPerPage = 10;
-  let currentPage = 0;
+  let currentPage = 1;
+  let totalPages = Math.ceil(fileList.length / itemsPerPage);
   let filteredFiles = [...fileList];
 
   const downloadList = document.querySelector('#download-list ul');
-  const loadMoreBtn = document.getElementById('loadMore');
+  const prevPageBtn = document.getElementById('prevPage');
+  const currentPageBtn = document.getElementById('currentPage');
+  const nextPageBtn = document.getElementById('nextPage');
   const searchInput = document.getElementById('searchInput');
   const fileCountSpan = document.getElementById('file-count');
 
-  function displayFiles(files, start, limit) {
+  function displayFiles(page) {
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const files = filteredFiles.slice(start, end);
+
+    downloadList.innerHTML = '';
     const fragment = document.createDocumentFragment();
     
-    files.slice(start, start + limit).forEach(file => {
+    files.forEach(file => {
       const li = document.createElement('li');
       li.className = 'list-group-item';
       
@@ -112,17 +126,14 @@ order: 4
       fragment.appendChild(li);
     });
 
-    return fragment;
+    downloadList.appendChild(fragment);
+    updatePagination();
   }
 
-  function updateList() {
-    downloadList.innerHTML = '';
-    const fragment = displayFiles(filteredFiles, 0, itemsPerPage);
-    downloadList.appendChild(fragment);
-    
-    loadMoreBtn.classList.toggle('d-none', filteredFiles.length <= itemsPerPage);
-    fileCountSpan.textContent = filteredFiles.length;
-    currentPage = 1;
+  function updatePagination() {
+    prevPageBtn.classList.toggle('disabled', currentPage === 1);
+    nextPageBtn.classList.toggle('disabled', currentPage === totalPages);
+    currentPageBtn.firstElementChild.textContent = currentPage;
   }
 
   function handleSearch() {
@@ -130,24 +141,30 @@ order: 4
     filteredFiles = fileList.filter(file => 
       file.name.toLowerCase().includes(searchTerm)
     );
-    updateList();
+    totalPages = Math.ceil(filteredFiles.length / itemsPerPage);
+    currentPage = 1;
+    displayFiles(currentPage);
+    fileCountSpan.textContent = filteredFiles.length;
   }
 
   function init() {
     searchInput.addEventListener('input', handleSearch);
 
-    loadMoreBtn.addEventListener('click', () => {
-      const start = currentPage * itemsPerPage;
-      const fragment = displayFiles(filteredFiles, start, itemsPerPage);
-      downloadList.appendChild(fragment);
-      currentPage++;
-      
-      if (currentPage * itemsPerPage >= filteredFiles.length) {
-        loadMoreBtn.classList.add('d-none');
+    prevPageBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        displayFiles(currentPage);
       }
     });
 
-    updateList();
+    nextPageBtn.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        displayFiles(currentPage);
+      }
+    });
+
+    displayFiles(currentPage);
   }
 
   if (document.readyState === 'loading') {
