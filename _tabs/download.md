@@ -30,7 +30,7 @@ order: 4
   <div class="card-header d-flex justify-content-between hide-border-bottom">
     <span class="ms-2">
       <i class="far fa-folder-open fa-fw"></i>
-      <a class="mx-2">Available Downloads</a>
+      <a href="#" class="mx-2">Available Downloads</a>
       <span class="text-muted small font-weight-light">
         <span id="file-count">0</span> files
       </span>
