@@ -68,24 +68,16 @@ order: 4
 
 <script>
 (function() {
-  const fileList = [
-    {% for file in site.static_files %}
-      {% if file.path contains '/downloads/' %}
-      {
-        name: "{{ file.name }}",
-        path: "{{ file.path | relative_url }}",
-        date: "{{ file.modified_time | date: '%Y-%m-%d' }}",
-        relativePath: "{{ file.path | remove_first: '/downloads/' }}"
-      }{% unless forloop.last %},{% endunless %}
-      {% endif %}
-    {% endfor %}
-  ];
+  const REPO_OWNER = 'rizkikotet-dev';
+  const REPO_NAME = 'RTA-WRT';
+  const API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases`;
 
   const itemsPerPage = 10;
   let currentPage = 1;
-  let totalPages = Math.ceil(fileList.length / itemsPerPage);
-  let filteredFiles = [...fileList];
+  let totalPages = 1;
+  let filteredFiles = [];
   let currentPath = '';
+  let releasesData = [];
 
   const downloadList = document.querySelector('#download-list ul');
   const prevPageBtn = document.getElementById('prevPage');
@@ -94,10 +86,44 @@ order: 4
   const searchInput = document.getElementById('searchInput');
   const fileCountSpan = document.getElementById('file-count');
 
+  async function fetchReleases() {
+    try {
+      const response = await fetch(API_URL);
+      releasesData = await response.json();
+      
+      // Transform releases data into our file structure
+      filteredFiles = releasesData.flatMap(release => {
+        return release.assets.map(asset => ({
+          name: asset.name,
+          path: asset.browser_download_url,
+          date: new Date(asset.created_at).toISOString().split('T')[0],
+          relativePath: `${release.tag_name}/${asset.name}`,
+          size: formatBytes(asset.size)
+        }));
+      });
+
+      totalPages = Math.ceil(filteredFiles.length / itemsPerPage);
+      displayFiles(currentPage);
+      fileCountSpan.textContent = filteredFiles.length;
+    } catch (error) {
+      console.error('Error fetching releases:', error);
+      downloadList.innerHTML = '<li class="list-group-item">Error loading releases. Please try again later.</li>';
+    }
+  }
+
+  function formatBytes(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  }
+
   function displayFiles(page) {
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    const files = filteredFiles.slice(start, end);
+    const filesToDisplay = getFilteredFiles();
+    const files = filesToDisplay.slice(start, end);
 
     downloadList.innerHTML = '';
     const fragment = document.createDocumentFragment();
@@ -116,104 +142,116 @@ order: 4
       fragment.appendChild(backLi);
     }
 
-    files.forEach(file => {
-      const li = document.createElement('li');
-      li.className = 'list-group-item';
-      
-      const isFolder = file.relativePath.includes('/') && 
-                       file.relativePath.split('/')[0] === currentPath;
-      
-      li.innerHTML = `
-        <div class="d-flex justify-content-between align-items-center">
-          <span ${isFolder ? `onclick="navigateToFolder('${file.relativePath.split('/')[1]}')"` : ''} style="cursor: ${isFolder ? 'pointer' : 'default'}">
-            <i class="far ${isFolder ? 'fa-folder' : 'fa-file'} fa-fw"></i>
-            <span class="mx-2">${isFolder ? file.relativePath.split('/')[1] : file.name}</span>
-            ${!isFolder ? `<span class="text-muted small font-weight-light">
-              Added: ${file.date}
-            </span>` : ''}
-          </span>
-          ${!isFolder ? `
-          <a href="${file.path}" 
-             download 
-             class="category-trigger hide-border-bottom"
-             aria-label="Download ${file.name}"
-          >
-            <i class="fas fa-download fa-fw"></i>
-          </a>
-          ` : ''}
-        </div>
-      `;
-      
-      fragment.appendChild(li);
-    });
+    if (currentPath === '') {
+      // Display releases as folders
+      const uniqueReleases = new Set(filteredFiles.map(file => file.relativePath.split('/')[0]));
+      [...uniqueReleases].forEach(release => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        const releaseFiles = filteredFiles.filter(f => f.relativePath.startsWith(release + '/'));
+        
+        li.innerHTML = `
+          <div class="d-flex justify-content-between align-items-center">
+            <span onclick="navigateToFolder('${release}')" style="cursor: pointer;">
+              <i class="far fa-folder fa-fw"></i>
+              <span class="mx-2">${release}</span>
+              <span class="text-muted small font-weight-light">
+                (${releaseFiles.length} files)
+              </span>
+            </span>
+          </div>
+        `;
+        fragment.appendChild(li);
+      });
+    } else {
+      // Display files in the selected release
+      files.forEach(file => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        
+        li.innerHTML = `
+          <div class="d-flex justify-content-between align-items-center">
+            <span>
+              <i class="far fa-file fa-fw"></i>
+              <span class="mx-2">${file.name}</span>
+              <span class="text-muted small font-weight-light">
+                ${file.size} - Added: ${file.date}
+              </span>
+            </span>
+            <a href="${file.path}" 
+               download 
+               class="category-trigger hide-border-bottom"
+               aria-label="Download ${file.name}"
+            >
+              <i class="fas fa-download fa-fw"></i>
+            </a>
+          </div>
+        `;
+        fragment.appendChild(li);
+      });
+    }
 
     downloadList.appendChild(fragment);
-    updatePagination();
+    updatePagination(filesToDisplay.length);
+  }
+
+  function getFilteredFiles() {
+    const searchTerm = searchInput.value.toLowerCase();
+    let files = [...filteredFiles];
+    
+    if (currentPath !== '') {
+      files = files.filter(file => file.relativePath.startsWith(`${currentPath}/`));
+    }
+    
+    if (searchTerm) {
+      files = files.filter(file => file.name.toLowerCase().includes(searchTerm));
+    }
+    
+    return files;
+  }
+
+  function updatePagination(totalItems) {
+    totalPages = Math.ceil(totalItems / itemsPerPage);
+    currentPageBtn.querySelector('a').textContent = currentPage;
+    prevPageBtn.classList.toggle('disabled', currentPage === 1);
+    nextPageBtn.classList.toggle('disabled', currentPage >= totalPages);
   }
 
   function navigateToFolder(folderName) {
     currentPath = folderName;
-    filterFilesByPath();
+    currentPage = 1;
+    displayFiles(currentPage);
   }
 
   function navigateBack() {
     currentPath = '';
-    filterFilesByPath();
-  }
-
-  function filterFilesByPath() {
-    if (currentPath === '') {
-      const uniqueFolders = new Set();
-      filteredFiles = fileList.filter(file => {
-        const pathParts = file.relativePath.split('/');
-        if (pathParts.length === 1) return true;
-        if (pathParts.length > 1 && !uniqueFolders.has(pathParts[0])) {
-          uniqueFolders.add(pathParts[0]);
-          return true;
-        }
-        return false;
-      });
-    } else {
-      filteredFiles = fileList.filter(file => 
-        file.relativePath.startsWith(`${currentPath}/`)
-      );
-    }
-
-    totalPages = Math.ceil(filteredFiles.length / itemsPerPage);
     currentPage = 1;
     displayFiles(currentPage);
-    fileCountSpan.textContent = filteredFiles.length;
-  }
-
-  function handleSearch() {
-    const searchTerm = searchInput.value.toLowerCase();
-    filteredFiles = fileList.filter(file => 
-      file.name.toLowerCase().includes(searchTerm)
-    );
-    totalPages = Math.ceil(filteredFiles.length / itemsPerPage);
-    currentPage = 1;
-    displayFiles(currentPage);
-    fileCountSpan.textContent = filteredFiles.length;
   }
 
   function init() {
-    searchInput.addEventListener('input', handleSearch);
+    fetchReleases();
 
-    prevPageBtn.addEventListener('click', () => {
+    searchInput.addEventListener('input', () => {
+      currentPage = 1;
+      displayFiles(currentPage);
+    });
+
+    prevPageBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       if (currentPage > 1) {
         currentPage--;
         displayFiles(currentPage);
       }
     });
 
-    nextPageBtn.addEventListener('click', () => {
+    nextPageBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       if (currentPage < totalPages) {
         currentPage++;
         displayFiles(currentPage);
       }
     });
-
-    filterFilesByPath();
   }
 
   if (document.readyState === 'loading') {
@@ -255,30 +293,12 @@ search {
   border: 1px solid var(--search-border-color);
   background: var(--main-bg);
   padding: 0 0.5rem;
+}
 
-  i {
-    z-index: 2;
-    font-size: 0.9rem;
-    color: var(--search-icon-color);
-  }
-
-  @include bp.lt(bp.get(lg)) {
-    display: none;
-  }
-
-  @include bp.lg {
-    max-width: v.$search-max-width;
-  }
-
-  @include bp.xl {
-    margin-right: 4rem;
-  }
-
-  @include bp.xxxl {
-    margin-right: calc(
-      v.$main-content-max-width / 4 - v.$search-max-width - 0.75rem
-    );
-  }
+search i {
+  z-index: 2;
+  font-size: 0.9rem;
+  color: var(--search-icon-color);
 }
 
 #searchInput {
@@ -288,14 +308,10 @@ search {
   padding: 0.18rem 0.3rem;
   color: var(--text-color);
   height: auto;
+}
 
-  &:focus {
-    box-shadow: none;
-  }
-
-  @include bp.xl {
-    transition: all 0.3s ease-in-out;
-  }
+#searchInput:focus {
+  box-shadow: none;
 }
 
 .dark-mode-inverted {
