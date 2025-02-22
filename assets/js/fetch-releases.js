@@ -77,7 +77,7 @@ function populateTable(assets) {
         </td>
         <td class="px-4 py-3 text-center">
           <a href="${asset.browser_download_url}" 
-             class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 hover:bg-blue-600 text-white transition-colors" 
+             class="inline-flex items-center justify-center w-8 h-8 rounded-full text-white transition-colors" 
              download 
              target="_blank"
              title="Download ${asset.name}">

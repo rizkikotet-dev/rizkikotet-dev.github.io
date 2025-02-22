@@ -15,12 +15,12 @@ order: 5
 
 <div class="space-y-4">
   <!-- Release selector and search container -->
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+  <div class="rounded-lg shadow p-4">
     <div class="grid md:grid-cols-2 gap-4">
       <!-- Release selector -->
       <div>
         <select id="releaseSelector" 
-                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 border focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 border focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
           <option value="">Loading releases...</option>
         </select>
       </div>
@@ -32,14 +32,14 @@ order: 5
         </div>
         <input type="text" 
                id="searchInput" 
-               class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 border focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+               class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 border focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                placeholder="Cari file...">
       </div>
     </div>
   </div>
 
   <!-- Table container -->
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+  <div class="rounded-lg shadow overflow-hidden">
     <div class="overflow-x-auto max-h-[600px]">
       <table class="w-full border-collapse border">
         <thead>
