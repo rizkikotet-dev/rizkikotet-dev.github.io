@@ -1,22 +1,31 @@
 ---
 layout: page
-title: Daftar Rilis Terbaru
+title: Daftar Rilis
 icon: fas fa-download
 order: 5
 ---
 
 <div class="release-container px-1">
-  <div id="release-info" class="mb-4"></div>
-  
-  <!-- Search box using Chirpy's search style -->
-  <div class="mb-3">
-    <div class="search-box">
-      <i class="fas fa-search"></i>
-      <input type="text" 
-             id="searchInput" 
-             class="w-100"
-             placeholder="Cari file..."
-             aria-label="Search files">
+  <!-- Release selector and search container -->
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <select id="releaseSelector" class="form-select" aria-label="Select release">
+            <option value="">Loading releases...</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" 
+                   id="searchInput" 
+                   class="w-100"
+                   placeholder="Cari file..."
+                   aria-label="Search files">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -48,9 +57,7 @@ order: 5
 
 <script src="{{ '/assets/js/fetch-releases.js' | relative_url }}"></script>
 
-<!-- Custom styles that work with Chirpy -->
 <style>
-/* Table styles compatible with Chirpy's dark mode */
 .table-files {
   margin-bottom: 0;
 }
@@ -70,7 +77,6 @@ order: 5
   vertical-align: middle;
 }
 
-/* Search box customization */
 .search-box {
   position: relative;
   padding: 0.5rem;
@@ -98,7 +104,6 @@ order: 5
   outline: none;
 }
 
-/* Button customization */
 .btn-download {
   background-color: var(--link-color);
   border-color: var(--link-color);
@@ -113,7 +118,6 @@ order: 5
   color: #fff;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .table-files td:last-child {
     text-align: center;

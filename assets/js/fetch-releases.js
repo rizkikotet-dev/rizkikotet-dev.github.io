@@ -1,6 +1,6 @@
-async function fetchLatestRelease(owner, repo) {
+async function fetchAllReleases(owner, repo) {
   const response = await fetch(
-    `https://api.github.com/repos/${owner}/${repo}/releases/latest`
+    `https://api.github.com/repos/${owner}/${repo}/releases`
   );
   if (!response.ok) {
     throw new Error('Network response was not ok');
@@ -21,35 +21,37 @@ function formatFileSize(bytes) {
   return `${size.toFixed(2)} ${units[unitIndex]}`;
 }
 
-function generateTable(release) {
-  const releaseInfo = document.getElementById('release-info');
-  const releaseList = document.getElementById('release-list');
+function setupReleaseSelector(releases) {
+  const selector = document.getElementById('releaseSelector');
+  selector.innerHTML = releases
+    .map(
+      (release) => `
+      <option value="${release.id}">
+        ${release.name || release.tag_name}
+      </option>
+    `
+    )
+    .join('');
 
-  // Add release information with Chirpy styling
-  releaseInfo.innerHTML = `
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title mb-3">${release.name || 'Latest Release'}</h4>
-          <div class="card-text mb-3">${
-            release.body || 'No description available.'
-          }</div>
-          <div class="text-muted">
-            <i class="far fa-calendar-alt"></i> 
-            Released on: ${new Date(release.published_at).toLocaleDateString()}
-          </div>
-        </div>
-      </div>
-    `;
+  // Store releases globally
+  window.allReleases = releases;
 
-  // Store assets globally for search function
-  window.releaseAssets = release.assets;
+  // Set up event listener
+  selector.addEventListener('change', (event) => {
+    const selectedRelease = releases.find(
+      (r) => r.id.toString() === event.target.value
+    );
+    if (selectedRelease) {
+      populateTable(selectedRelease.assets);
+      // Reset search
+      document.getElementById('searchInput').value = '';
+    }
+  });
 
-  // Initial table population
-  populateTable(release.assets);
-
-  // Setup search functionality
-  const searchInput = document.getElementById('searchInput');
-  searchInput.addEventListener('input', handleSearch);
+  // Initially populate with first release
+  if (releases.length > 0) {
+    populateTable(releases[0].assets);
+  }
 }
 
 function populateTable(assets) {
@@ -85,10 +87,17 @@ function populateTable(assets) {
 
 function handleSearch(event) {
   const searchTerm = event.target.value.toLowerCase();
-  const filteredAssets = window.releaseAssets.filter((asset) =>
-    asset.name.toLowerCase().includes(searchTerm)
+  const selectedReleaseId = document.getElementById('releaseSelector').value;
+  const selectedRelease = window.allReleases.find(
+    (r) => r.id.toString() === selectedReleaseId
   );
-  populateTable(filteredAssets);
+
+  if (selectedRelease) {
+    const filteredAssets = selectedRelease.assets.filter((asset) =>
+      asset.name.toLowerCase().includes(searchTerm)
+    );
+    populateTable(filteredAssets);
+  }
 }
 
 async function main() {
@@ -96,10 +105,14 @@ async function main() {
   const repo = 'RTA-WRT';
 
   try {
-    const release = await fetchLatestRelease(owner, repo);
-    generateTable(release);
+    const releases = await fetchAllReleases(owner, repo);
+    setupReleaseSelector(releases);
+
+    // Setup search functionality
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', handleSearch);
   } catch (error) {
-    console.error('Error fetching release:', error);
+    console.error('Error fetching releases:', error);
     document.getElementById('release-list').innerHTML = `
         <tr>
           <td colspan="3" class="text-center text-danger">
@@ -107,6 +120,10 @@ async function main() {
             Error loading release data. Please try again later.
           </td>
         </tr>
+      `;
+
+    document.getElementById('releaseSelector').innerHTML = `
+        <option value="">Error loading releases</option>
       `;
   }
 }
