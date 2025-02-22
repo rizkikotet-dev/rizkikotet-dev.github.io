@@ -8,27 +8,70 @@ async function fetchLatestRelease(owner, repo) {
   return response.json();
 }
 
-function generateMarkdown(release) {
-  let markdown = `# Daftar File Rilis Terbaru\n\nBerikut adalah daftar file dari rilis terbaru:\n\n`;
+function formatFileSize(bytes) {
+  const units = ['B', 'KB', 'MB', 'GB'];
+  let size = bytes;
+  let unitIndex = 0;
 
+  while (size >= 1024 && unitIndex < units.length - 1) {
+    size /= 1024;
+    unitIndex++;
+  }
+
+  return `${size.toFixed(2)} ${units[unitIndex]}`;
+}
+
+function generateTable(release) {
+  const releaseInfo = document.getElementById('release-info');
+  const releaseList = document.getElementById('release-list');
+
+  // Add release information
+  releaseInfo.innerHTML = `
+      <h3>${release.name || 'Latest Release'}</h3>
+      <p>${release.body || 'No description available.'}</p>
+      <p class="text-muted">Released on: ${new Date(
+        release.published_at
+      ).toLocaleDateString()}</p>
+    `;
+
+  // Clear loading message
+  releaseList.innerHTML = '';
+
+  // Add each asset as a table row
   release.assets.forEach((asset) => {
-    markdown += `- [${asset.name}](${asset.browser_download_url}) - ${asset.size} bytes\n`;
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${asset.name}</td>
+        <td>${formatFileSize(asset.size)}</td>
+        <td>
+          <a href="${
+            asset.browser_download_url
+          }" class="btn btn-primary btn-sm" 
+             download target="_blank">
+            <i class="fas fa-download"></i> Unduh
+          </a>
+        </td>
+      `;
+    releaseList.appendChild(row);
   });
-
-  markdown += `\nSilakan klik pada nama file untuk mengunduhnya.`;
-  return markdown;
 }
 
 async function main() {
-  const owner = 'rizkikotet-dev'; // Ganti dengan username GitHub Anda
-  const repo = 'RTA-WRT'; // Ganti dengan nama repositori Anda
+  const owner = 'rizkikotet-dev';
+  const repo = 'RTA-WRT';
 
   try {
     const release = await fetchLatestRelease(owner, repo);
-    const markdown = generateMarkdown(release);
-    document.getElementById('release-list').innerText = markdown; // Menampilkan hasil di elemen dengan id 'release-list'
+    generateTable(release);
   } catch (error) {
     console.error('Error fetching release:', error);
+    document.getElementById('release-list').innerHTML = `
+        <tr>
+          <td colspan="3" class="text-center text-danger">
+            Error loading release data. Please try again later.
+          </td>
+        </tr>
+      `;
   }
 }
 
