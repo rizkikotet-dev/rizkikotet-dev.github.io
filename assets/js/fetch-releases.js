@@ -59,23 +59,28 @@ function populateTable(assets) {
   const noResults = document.getElementById('noResults');
 
   if (assets.length === 0) {
-    noResults.classList.remove('d-none');
+    noResults.classList.remove('hidden');
     releaseList.innerHTML = '';
     return;
   }
 
-  noResults.classList.add('d-none');
+  noResults.classList.add('hidden');
   releaseList.innerHTML = assets
     .map(
       (asset) => `
-      <tr>
-        <td class="text-break">${asset.name}</td>
-        <td class="text-nowrap">${formatFileSize(asset.size)}</td>
-        <td class="text-center">
+      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+        <td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100 break-all">
+          ${asset.name}
+        </td>
+        <td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100 whitespace-nowrap">
+          ${formatFileSize(asset.size)}
+        </td>
+        <td class="px-4 py-3 text-center">
           <a href="${asset.browser_download_url}" 
-             class="btn-download text-decoration-none" 
+             class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 hover:bg-blue-600 text-white transition-colors" 
              download 
-             target="_blank">
+             target="_blank"
+             title="Download ${asset.name}">
             <i class="fas fa-download"></i>
           </a>
         </td>
@@ -115,8 +120,8 @@ async function main() {
     console.error('Error fetching releases:', error);
     document.getElementById('release-list').innerHTML = `
         <tr>
-          <td colspan="3" class="text-center text-danger">
-            <i class="fas fa-exclamation-circle"></i>
+          <td colspan="3" class="px-4 py-3 text-center text-red-600 dark:text-red-400">
+            <i class="fas fa-exclamation-circle mr-2"></i>
             Error loading release data. Please try again later.
           </td>
         </tr>
