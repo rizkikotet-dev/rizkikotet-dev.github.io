@@ -68,11 +68,11 @@ function populateTable(assets) {
   releaseList.innerHTML = assets
     .map(
       (asset) => `
-      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
-        <td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100 break-all">
+      <tr>
+        <td class="px-4 py-3 text-sm border break-all">
           ${asset.name}
         </td>
-        <td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100 whitespace-nowrap">
+        <td class="px-4 py-3 text-sm border whitespace-nowrap">
           ${formatFileSize(asset.size)}
         </td>
         <td class="px-4 py-3 text-center">

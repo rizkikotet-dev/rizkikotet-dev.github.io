@@ -20,7 +20,7 @@ order: 5
       <!-- Release selector -->
       <div>
         <select id="releaseSelector" 
-                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 border focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
           <option value="">Loading releases...</option>
         </select>
       </div>
@@ -32,7 +32,7 @@ order: 5
         </div>
         <input type="text" 
                id="searchInput" 
-               class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+               class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 border focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                placeholder="Cari file...">
       </div>
     </div>
@@ -41,16 +41,16 @@ order: 5
   <!-- Table container -->
   <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
     <div class="overflow-x-auto max-h-[600px]">
-      <table class="w-full">
-        <thead class="bg-gray-50 dark:bg-gray-700 sticky top-0">
+      <table class="w-full border-collapse border">
+        <thead>
           <tr>
-            <th class="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">
+            <th class="px-4 py-3 text-left text-sm font-semibold border">
               Nama File
             </th>
-            <th class="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-gray-100 w-32">
+            <th class="px-4 py-3 text-left text-sm font-semibold border w-32">
               Ukuran
             </th>
-            <th class="px-4 py-3 text-center text-sm font-semibold text-gray-900 dark:text-gray-100 w-24">
+            <th class="px-4 py-3 text-center text-sm font-semibold border w-24">
               Unduh
             </th>
           </tr>
