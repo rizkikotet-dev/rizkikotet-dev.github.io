@@ -25,35 +25,70 @@ function generateTable(release) {
   const releaseInfo = document.getElementById('release-info');
   const releaseList = document.getElementById('release-list');
 
-  // Add release information
+  // Add release information with Chirpy styling
   releaseInfo.innerHTML = `
-      <h3>${release.name || 'Latest Release'}</h3>
-      <p>${release.body || 'No description available.'}</p>
-      <p class="text-muted">Released on: ${new Date(
-        release.published_at
-      ).toLocaleDateString()}</p>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-3">${release.name || 'Latest Release'}</h4>
+          <div class="card-text mb-3">${
+            release.body || 'No description available.'
+          }</div>
+          <div class="text-muted">
+            <i class="far fa-calendar-alt"></i> 
+            Released on: ${new Date(release.published_at).toLocaleDateString()}
+          </div>
+        </div>
+      </div>
     `;
 
-  // Clear loading message
-  releaseList.innerHTML = '';
+  // Store assets globally for search function
+  window.releaseAssets = release.assets;
 
-  // Add each asset as a table row
-  release.assets.forEach((asset) => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-        <td>${asset.name}</td>
-        <td>${formatFileSize(asset.size)}</td>
-        <td>
-          <a href="${
-            asset.browser_download_url
-          }" class="btn btn-primary btn-sm" 
-             download target="_blank">
-            <i class="fas fa-download"></i> Unduh
+  // Initial table population
+  populateTable(release.assets);
+
+  // Setup search functionality
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', handleSearch);
+}
+
+function populateTable(assets) {
+  const releaseList = document.getElementById('release-list');
+  const noResults = document.getElementById('noResults');
+
+  if (assets.length === 0) {
+    noResults.classList.remove('d-none');
+    releaseList.innerHTML = '';
+    return;
+  }
+
+  noResults.classList.add('d-none');
+  releaseList.innerHTML = assets
+    .map(
+      (asset) => `
+      <tr>
+        <td class="text-break">${asset.name}</td>
+        <td class="text-nowrap">${formatFileSize(asset.size)}</td>
+        <td class="text-center">
+          <a href="${asset.browser_download_url}" 
+             class="btn-download text-decoration-none" 
+             download 
+             target="_blank">
+            <i class="fas fa-download"></i>
           </a>
         </td>
-      `;
-    releaseList.appendChild(row);
-  });
+      </tr>
+    `
+    )
+    .join('');
+}
+
+function handleSearch(event) {
+  const searchTerm = event.target.value.toLowerCase();
+  const filteredAssets = window.releaseAssets.filter((asset) =>
+    asset.name.toLowerCase().includes(searchTerm)
+  );
+  populateTable(filteredAssets);
 }
 
 async function main() {
@@ -68,6 +103,7 @@ async function main() {
     document.getElementById('release-list').innerHTML = `
         <tr>
           <td colspan="3" class="text-center text-danger">
+            <i class="fas fa-exclamation-circle"></i>
             Error loading release data. Please try again later.
           </td>
         </tr>
