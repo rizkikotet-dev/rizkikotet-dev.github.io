@@ -4,6 +4,7 @@ date: 2025-02-03 15:25:00 +0700
 categories: [OpenWrt, Firmware]
 tags: [OpenWrt, Custom Firmware, Networking]
 comments: true
+pin: true
 ---
 
 <h1 align="center">
@@ -25,52 +26,9 @@ comments: true
 
 ---
 
-## 📥 Link Download
-
-<p align="center">
-<a href="https://github.com/rizkikotet-dev/RTA-WRT/releases/"><img alt="Download Firmware" src="https://img.shields.io/badge/Download-OpenWrt-brightgreen?style=for-the-badge&logo=openwrt"></a>
-</p>
-
-### 🔗 Referensi
-
-- [Apache License 2.0](https://github.com/rtaserver/RTA-WRT/blob/main/LICENSE)
-- [friWrt-MyWrtBuilder](https://github.com/frizkyiman/friWrt-MyWrtBuilder) oleh [frizkyiman](https://github.com/frizkyiman)
-- [MyWrtBuilder](https://github.com/Revincx/MyWrtBuilder) oleh [Revincx](https://github.com/Revincx)
-- [ULO-Builder](https://github.com/armarchindo/ULO-Builder) oleh [DBAI](https://github.com/armarchindo)
-
----
-
 ## ⚠️ Peringatan untuk Instalasi Pertama
 
 > **Catatan:** Booting awal mungkin memerlukan waktu lebih lama karena proses partisi ulang penyimpanan dan konfigurasi tambahan.
-
----
-
-## 📱 Perangkat yang Didukung
-
-### Amlogic
-- **s905x**: HG680P, B860Hv1/v2 (Mod Boot SDCARD)
-- **s905x2**: HG680FJ, B860Hv5, MNC CYBORG001
-- **s905x3**
-- **s905x4**: AKARI AX810, dll
-
-### Allwinner
-- **H5**: Orange Pi Zero Plus 2, Zero Plus, Prime, PC2
-- **H6**: Orange Pi 1 Plus, Lite 2, 3 LTS, 3
-- **H616**: Orange Pi Zero 2
-- **H618**: Orange Pi Zero 3, Zero 2W
-
-### Rockchip
-- **RK3566**: Orange Pi 3B
-- **RK3588S**: Orange Pi 5
-- **RK3588**: Orange Pi 5 Plus
-
-### Broadcom
-- **BCM2710**: Raspberry Pi 3A+/3B/3B+/CM3/Zero2/Zero2W (64-bit)
-- **BCM2711**: Raspberry Pi 4B/400/CM4 (64-bit)
-
-### Generic
-- **x86-64**
 
 ---
 
@@ -108,245 +66,77 @@ comments: true
 
 ---
 
-## Download
+## 📥 Download
 
-<table><thead>
-  <tr>
-    <th colspan="9">Amlogic Series</th>
-  </tr></thead>
-<tbody>
-  <tr>
-    <td>Devices</td>
-    <td>OpenClash</td>
-    <td>Nikki</td>
-    <td>Passwall</td>
-    <td>OpenClash &amp; Passwall</td>
-    <td>Nikki &amp; Passwall</td>
-    <td>Nikki &amp; OpenClash</td>
-    <td>All Tunnel</td>
-    <td>No Tunnel</td>
-  </tr>
-  <tr>
-    <td>s905</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905-beelink-mini</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905-mxqpro-plus</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905w</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905w-w95</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905w-x96-mini</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905w-x96w</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905x</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905x-b860h</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905x-nexbox-a95x</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905x2</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905x2-km3</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905x2-x96max-2g</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905x3</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905x3-h96max</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905x3-hk1</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s905x3-x96max</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s912</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s912-h96pro-plus</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-  <tr>
-    <td>s912-x92</td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-    <td><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;5.15&gt;)</a><br><a href="https://test.com/" target="_blank" rel="noopener noreferrer">Download (k&lt;6.6&gt;)</a></td>
-  </tr>
-</tbody></table>
+<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+<style type="text/tailwindcss">
+  @theme {
+    --color-clifford: #da373d;
+  }
+</style>
+
+<div class="space-y-4">
+  <!-- Release selector and search container -->
+  <div class="rounded-lg shadow p-4">
+    <div class="grid md:grid-cols-2 gap-4">
+      <!-- Release selector -->
+      <div>
+        <select id="releaseSelector" 
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 border focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          <option value="">Loading releases...</option>
+        </select>
+      </div>
+      
+      <!-- Search box -->
+      <div class="relative">
+        <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+          <i class="fas fa-search text-gray-400 dark:text-gray-500"></i>
+        </div>
+        <input type="text" 
+               id="searchInput" 
+               class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 border focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+               placeholder="Cari file...">
+      </div>
+    </div>
+  </div>
+
+  <!-- Table container -->
+  <div class="rounded-lg shadow overflow-hidden">
+    <div class="overflow-x-auto max-h-[600px]">
+      <table class="w-full border-collapse border">
+        <thead>
+          <tr>
+            <th class="px-4 py-3 text-left text-sm font-semibold border">
+              Nama File
+            </th>
+            <th class="px-4 py-3 text-left text-sm font-semibold border w-32">
+              Ukuran
+            </th>
+            <th class="px-4 py-3 text-center text-sm font-semibold border w-24">
+              Unduh
+            </th>
+          </tr>
+        </thead>
+        <tbody id="release-list" class="divide-y divide-gray-200 dark:divide-gray-700">
+          <tr>
+            <td colspan="3" class="px-4 py-3 text-center text-gray-500 dark:text-gray-400">
+              Loading...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- No results message -->
+  <div id="noResults" class="hidden bg-yellow-50 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-100 rounded-lg p-4 text-center">
+    Tidak ada file yang sesuai dengan pencarian
+  </div>
+</div>
+
+<script src="{{ '/assets/js/fetch-releases.js' | relative_url }}"></script>
 
 Terima kasih telah menggunakan **RTA-WRT**. Dukungan Anda sangat berarti bagi kami untuk terus berkembang!
 
+Last Update: 23022025
