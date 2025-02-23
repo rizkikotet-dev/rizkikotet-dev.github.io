@@ -1,0 +1,48 @@
+name: "Update Date"
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update Branch Info
+        id: update
+        env:
+          CURRENT_BRANCH: ${{ env.CURRENT_BRANCH }}
+        run: |
+          set -euo pipefail
+          sudo timedatectl set-timezone "Asia/Jakarta"
+          DATETIME=$(date +'%d%m%Y')
+
+          # Updated sed pattern to match the full 8-digit date
+          sed -i "s|Last Update: [0-9]\{8\}|Last Update: $DATETIME|g" ./_posts/2025-02-03-firmware-openwrt.md
+
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+
+          git add .
+
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto Release: $(date "+%d-%m-%Y %H:%M:%S")"
+            git push || echo "Failed to push changes"
+          else
+            echo "No changes detected, skipping commit"
+          fi
